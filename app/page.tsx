@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect} from 'react';
 import axios from 'axios';
-import SearchBar from './components/SearchBar';
 import CategoryFilter from './components/CategoryFilter';
 import ProductGrid from './components/ProductGrid';
-import { CartProvider, useCart } from './providers/CartProvider';
+import {  useCart } from './providers/CartProvider';
 
 export default function Home() {
   const [products, setProducts] = useState([]);

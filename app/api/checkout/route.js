@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
 import dbConnect from '../../lib/mongodb';
 import Order from '../../models/Order';
 import Cart from '../../models/Cart';

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { FiPlusCircle, FiMinusCircle, FiTrash2 } from "react-icons/fi";
-import { formatPrice } from "../lib/cartUtils";
+import {  FiTrash2 } from "react-icons/fi";
+
 import { useCart } from "../providers/CartProvider";
 
 const CartItem = ({ item }) => {

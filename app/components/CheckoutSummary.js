@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { formatPrice, calculateCartTotals } from '../lib/cartUtils';
+import {  calculateCartTotals } from '../lib/cartUtils';
 import { useCart } from '../providers/CartProvider';
 import { toast } from 'react-toastify';
 import { useAuth } from '@clerk/nextjs';

@@ -5,7 +5,7 @@ import { FiShoppingCart, FiHeart } from 'react-icons/fi';
 import { useCart } from '../providers/CartProvider';
 
 const ProductCard = ({ product }) => {
-  const { addItem, removeItem } = useCart();
+  const { addItem } = useCart();
 
   const getAvailabilityBadge = () => {
     if (product.available >= 10) {

@@ -10,9 +10,9 @@ import { BsShopWindow } from "react-icons/bs";
 
 const Header = () => {
   const pathname = usePathname();
-  const { user, isSignedIn } = useUser();
+  const {  isSignedIn } = useUser();
   const { cartItems } = useCart();
-  const { searchQuery, setSearchQuery } = useCart();
+  const {  setSearchQuery } = useCart();
 
   const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const handleSearch = (query) => {

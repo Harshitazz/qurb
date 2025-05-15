@@ -13,7 +13,7 @@ const ProductGrid = ({ products, searchQuery }) => {
     return (
       <div className="text-center py-12">
         <h2 className="text-2xl font-semibold text-gray-700">
-          No products found matching "{searchQuery}"
+          No products found matching {searchQuery}
         </h2>
         <p className="mt-2 text-gray-500">
           Try a different search term or browse categories.
