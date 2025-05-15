@@ -6,7 +6,7 @@ import {  FiUser } from "react-icons/fi";
 import { useUser, SignInButton, UserButton } from "@clerk/nextjs";
 import { useCart } from "../providers/CartProvider";
 import SearchBar from "./SearchBar";
-import { BsShopWindow } from "react-icons/bs";
+import { BsCartFill, BsShopWindow } from "react-icons/bs";
 
 const Header = () => {
   const pathname = usePathname();
@@ -34,11 +34,7 @@ const Header = () => {
         <div className="flex items-center space-x-6 ">
           {pathname === "/" ? (
             <Link href="/checkout" className="relative flex items-center">
-              <img
-                src="/icon.svg" 
-                alt="Cart"
-                className="h-5 w-5 object-contain"
-              />{" "}
+              <BsCartFill className="h-5 w-5 mr-1 text-gray-600" />
               {itemCount > 0 && (
                 <span className="absolute -top-2 -right-2 h-4 w-4 flex items-center justify-center rounded-full bg-blue-500 text-white text-xs">
                   {itemCount}

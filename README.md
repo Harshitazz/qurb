@@ -109,4 +109,4 @@ I considered several edge cases to ensure robustness:
 
 ## Live Demo
 
-View the live application at: [https://grocery-shop-demo.vercel.app](https://grocery-shop-demo.vercel.app)
+View the live application at: [https://grocery-shop-demo.vercel.app](https://qurb-mocha.vercel.app/)
