@@ -27,7 +27,7 @@ const CheckoutSummary = () => {
     try {
       const token = await getToken();
 
-      const response = await axios.post('/api/checkout',{
+      await axios.post('/api/checkout',{
         items: cartItems,
         subtotal,
         discount,

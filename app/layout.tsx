@@ -5,15 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CartProvider } from './providers/CartProvider';
 import Header from './components/Header';
 import './globals.css';
-import { Almarai } from 'next/font/google';
-
-
-const almarai = Almarai({
-  weight: ['300', '400', '700', '800'], 
-  subsets: ['arabic'], 
-  variable: '--font-almarai',
-});
-
 
 
 export const metadata: Metadata = {
