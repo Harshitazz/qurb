@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { ClerkProvider } from '@clerk/nextjs';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { CartProvider } from './providers/CartProvider';
+import Header from './components/Header';
+import './globals.css';
+import { Almarai } from 'next/font/google';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+
+const almarai = Almarai({
+  weight: ['300', '400', '700', '800'], 
+  subsets: ['arabic'], 
+  variable: '--font-almarai',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +28,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      
+    <body className={`  bg-gray-50 min-h-screen`}>
+    <CartProvider>
+          <Header />
+          <main className="container mx-auto px-4 py-8">
+            {children}
+          </main>
+          <ToastContainer position="bottom-right" />
+        </CartProvider>
       </body>
     </html>
+  </ClerkProvider>
   );
 }
