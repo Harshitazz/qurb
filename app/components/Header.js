@@ -76,7 +76,7 @@ const Header = () => {
           {pathname === "/" ? (
             <Link href="/checkout" className="relative flex items-center">
             <Image
-              src="/icon.svg"
+              src="/cart.svg"
               alt="Cart"
               width={32}
               height={32}
