@@ -49,6 +49,17 @@ const CartItem = ({ item, products }) => {
 
         <div className="flex-grow text-gray-500">
           <h3 className="font-medium ">{item.name}</h3>
+          <div className="flex justify-between mt-1">
+            {isOfferItem ? (
+              <span className="text-green-600 font-medium text-sm">
+                {getOfferLabel()}
+              </span>
+            ) : (
+              <span>
+                £{(parsePrice(item.price) * item.quantity).toFixed(2)}
+              </span>
+            )}
+          </div>
         </div>
 
         <div className="flex items-center ml-4 lg:gap-30 sm:gap-10 gap-2 text-gray-700">
@@ -90,17 +101,7 @@ const CartItem = ({ item, products }) => {
             </div>
             <div>{getAvailabilityBadge(remainingProduct)}</div>
           </div>
-          <div className="flex justify-between mt-1">
-            {isOfferItem ? (
-              <span className="text-green-600 font-medium text-sm">
-                {getOfferLabel()}
-              </span>
-            ) : (
-              <span>
-                £{(parsePrice(item.price) * item.quantity).toFixed(2)}
-              </span>
-            )}
-          </div>
+          
 
           <div className="bg-green-400 w-6 h-6 cursor-pointer rounded-md flex items-center justify-center mx-4 ">
             <button

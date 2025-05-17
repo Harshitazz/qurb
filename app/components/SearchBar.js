@@ -26,6 +26,7 @@ const SearchBar = ({ onSearch }) => {
           className="absolute right-4 text-gray-500 hover:text-gray-700"
         >
           <Image
+          alt="search"
             src="/search.svg" 
             width={18}
             height={18}
