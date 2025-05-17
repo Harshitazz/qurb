@@ -74,3 +74,40 @@ export const calculateCartTotals = (items) => {
     
     return [...regularItems, ...offerItems];
   };
+
+
+  export  const checkAvailability = (productId, currentQty,products , requestedQty = 1) => {
+      const product = products?.find(p => p.id === productId);
+      if (!product) return { success: false, message: 'Product not found' };
+      
+      const totalQty = currentQty + requestedQty;
+      if (product.available && totalQty > product.available) {
+        return { 
+          success: false, 
+          available: product.available,
+          message: `Only ${product.available} item(s) available. You already have ${currentQty} in your cart.`
+        };
+      }
+      
+      return { success: true };
+    };
+
+    export  const getAvailabilityBadge = (product) => {
+        if (product.available >= 10)
+          return (
+            <span className="inline-block bg-green-300 text-white text-xs px-3 py-1 rounded-full">
+              Available
+            </span>
+          );
+        if (product.available > 0)
+          return (
+            <span className="inline-block bg-orange-300 text-white text-xs px-3 py-1 rounded-full">
+              Only {product.available} left
+            </span>
+          );
+        return (
+          <span className="inline-block bg-red-300 text-white text-xs px-3 py-1 rounded-full">
+            Out of stock
+          </span>
+        );
+      };

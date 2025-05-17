@@ -7,6 +7,12 @@ import Header from './components/Header';
 import './globals.css';
 import { WishlistProvider } from "./providers/WishlistProvider";
 
+import { Almarai } from 'next/font/google';
+
+const almarai = Almarai({
+  subsets: ['arabic'],
+  weight: ['300', '400', '700', '800'], 
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="en" className={almarai.className}>
 
         <body className={`  min-h-screen`}>
           <CartProvider>

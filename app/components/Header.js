@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FiUser } from "react-icons/fi";
 import { useUser, SignInButton, UserButton } from "@clerk/nextjs";
 import { useCart } from "../providers/CartProvider";
 import SearchBar from "./SearchBar";
-import { BsCartFill, BsShopWindow } from "react-icons/bs";
+import {  BsShopWindow } from "react-icons/bs";
 import { useWishlist } from "../providers/WishlistProvider";
 import { useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import Wishlist from './Wishlist'
+import Image from "next/image";
 
 const Header = () => {
   const pathname = usePathname();
@@ -31,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <header className=" ">
+    <header className=" lg:mx-4">
       <div className="container mx-auto sm:px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
           <Link
@@ -44,15 +44,15 @@ const Header = () => {
         <SearchBar onSearch={handleSearch} />
 
         <div className="flex items-center space-x-6 ">
-          <div className="relative">
+          <div className="relative cursor-pointer ">
             <button
-              className="flex items-center text-gray-700 hover:text-red-500"
+              className="flex items-center text-gray-700 hover:text-red-400"
               onClick={toggleWishlistDropdown}
               aria-label="Wishlist"
             >
-              <AiFillHeart className="h-6 w-6" />
+              <AiFillHeart className="h-8 w-8 m-1" />
               {wishlistItemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-red-400 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                   {wishlistItemCount}
                 </span>
               )}
@@ -68,23 +68,29 @@ const Header = () => {
           ) : (
             <SignInButton>
               <button className="flex items-center text-gray-700">
-                <FiUser className="h-6 w-6 mr-1" />
+                {/* <FiUser className="h-8 w-8 mr-1" /> */}
                 <span>Sign In</span>
               </button>
             </SignInButton>
           )}
           {pathname === "/" ? (
             <Link href="/checkout" className="relative flex items-center">
-              <BsCartFill className="h-6 w-6 mr-1 text-gray-600" />
-              {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 h-4 w-4 flex items-center justify-center rounded-full bg-blue-500 text-white text-xs">
-                  {itemCount}
-                </span>
-              )}
-            </Link>
+            <Image
+              src="/icon.svg"
+              alt="Cart"
+              width={32}
+              height={32}
+              className="m-1 text-gray-600"
+            />
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 h-4 w-4 flex items-center justify-center rounded-full bg-blue-500 text-white text-xs">
+                {itemCount}
+              </span>
+            )}
+          </Link>
           ) : (
             <Link href="/" className="flex items-center text-gray-700">
-              <BsShopWindow className="h-5 w-5 mr-1" />
+              <BsShopWindow className="h-8 w-8 mr-1" />
             </Link>
           )}
         </div>

@@ -7,11 +7,10 @@ import ProductGrid from './components/ProductGrid';
 import {  useCart } from './providers/CartProvider';
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const {searchQuery,setSearchQuery}=useCart();
+  const {searchQuery,setSearchQuery,products,setProducts}=useCart();
 
   useEffect(() => {
     const fetchProducts = async () => {

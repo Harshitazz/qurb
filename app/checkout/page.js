@@ -11,7 +11,7 @@ import { toast } from 'react-toastify';
 export default function Checkout() {
   const router = useRouter();
   const { isSignedIn, isLoaded } = useUser();
-  const { cartItems, loading } = useCart();
+  const { cartItems, loading ,products} = useCart();
   
   useEffect(() => {
     if (isLoaded && !isSignedIn) {
@@ -52,10 +52,10 @@ export default function Checkout() {
     <div className='mx-0 lg:mx-8 '>
       <h1 className="text-3xl font-bold mb-4  text-gray-600">Checkout</h1>
       
-      <div className="lg:w-[80%] flex flex-col gap-8">
-        <div className="lg:col-span-2 gap-4 flex flex-col">
+      <div className="lg:w-[80%] flex flex-col gap-8 m-10 my-20">
+        <div className="lg:col-span-2 gap-6 flex flex-col">
             {groupedItems.map((item, index) => (
-              <CartItem key={`${item.productId}-${item.isOffer}-${index}`} item={item} />
+              <CartItem key={`${item.productId}-${item.isOffer}-${index}`} item={item} products={products}/>
             ))}
         </div>
         

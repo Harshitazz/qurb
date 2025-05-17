@@ -23,11 +23,14 @@ const ProductGrid = ({ products, searchQuery }) => {
   }
   
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2  gap-14 lg:mr-30 ">
+    <>
+    <h2 className='text-2xl text-gray-600 font-semibold my-4'>Trending Items</h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2  gap-14 lg:w-[80%]">
       {filteredProducts.map(product => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
+    </>
   );
 };
 

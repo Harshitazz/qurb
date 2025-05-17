@@ -81,10 +81,10 @@ const CheckoutSummary = () => {
         <button
           onClick={handleCheckout}
           disabled={isProcessing || cartItems.length === 0}
-          className={`p-3 w-1/3 rounded-lg font-medium ${
+          className={`p-3 w-1/3 rounded-lg font-medium  cursor-pointer ${
             isProcessing || cartItems.length === 0
               ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-              : "bg-green-500 text-white hover:bg-green-600"
+              : "bg-green-300 text-white hover:bg-green-400"
           } transition`}
         >
           {isProcessing ? "Processing..." : "Checkout"}

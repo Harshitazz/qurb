@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { addToCart, removeFromCart, updateCartWithOffers } from '../lib/cartUtils';
+import { addToCart, checkAvailability, removeFromCart, updateCartWithOffers } from '../lib/cartUtils';
 import { calculateOffers } from '../lib/offerUtils';
 import { useAuth, useUser } from '@clerk/nextjs';
 import { toast } from 'react-toastify';
@@ -89,21 +89,7 @@ export const CartProvider = ({ children }) => {
     return updateCartWithOffers(items, offerItems);
   };
 
-  const checkAvailability = (productId, currentQty, requestedQty = 1) => {
-    const product = products.find(p => p.id === productId);
-    if (!product) return { success: false, message: 'Product not found' };
-    
-    const totalQty = currentQty + requestedQty;
-    if (product.available && totalQty > product.available) {
-      return { 
-        success: false, 
-        available: product.available,
-        message: `Only ${product.available} item(s) available. You already have ${currentQty} in your cart.`
-      };
-    }
-    
-    return { success: true };
-  };
+
 
   const addItem = async (product) => {
     if (!isSignedIn || !user) {
@@ -116,7 +102,7 @@ export const CartProvider = ({ children }) => {
     );
     const currentQty = existingItem ? existingItem.quantity : 0;
     
-    const availabilityCheck = checkAvailability(product.id, currentQty);
+    const availabilityCheck = checkAvailability(product.id, currentQty,products);
     if (!availabilityCheck.success) {
       toast.error(availabilityCheck.message);
       return;
@@ -189,6 +175,8 @@ export const CartProvider = ({ children }) => {
         searchQuery,
         setSearchQuery,
         isSaving,
+        products,
+        setProducts
       }}
     >
       {children}
