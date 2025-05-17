@@ -89,9 +89,36 @@ export const CartProvider = ({ children }) => {
     return updateCartWithOffers(items, offerItems);
   };
 
+  const checkAvailability = (productId, currentQty, requestedQty = 1) => {
+    const product = products.find(p => p.id === productId);
+    if (!product) return { success: false, message: 'Product not found' };
+    
+    const totalQty = currentQty + requestedQty;
+    if (product.available && totalQty > product.available) {
+      return { 
+        success: false, 
+        available: product.available,
+        message: `Only ${product.available} item(s) available. You already have ${currentQty} in your cart.`
+      };
+    }
+    
+    return { success: true };
+  };
+
   const addItem = async (product) => {
     if (!isSignedIn || !user) {
       toast.error('Please log in to add items to your cart');
+      return;
+    }
+    
+    const existingItem = cartItems.find(item => 
+      (item.productId === product.id) && !item.isOffer
+    );
+    const currentQty = existingItem ? existingItem.quantity : 0;
+    
+    const availabilityCheck = checkAvailability(product.id, currentQty);
+    if (!availabilityCheck.success) {
+      toast.error(availabilityCheck.message);
       return;
     }
     

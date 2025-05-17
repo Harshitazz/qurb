@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import {  FiTrash2 } from "react-icons/fi";
+import { FiTrash2, FiX } from "react-icons/fi";
 
 import { useCart } from "../providers/CartProvider";
+import { parsePrice } from "../lib/cartUtils";
 
 const CartItem = ({ item }) => {
   const { addItem, removeItem } = useCart();
@@ -18,8 +19,6 @@ const CartItem = ({ item }) => {
     }
     return null;
   };
-  const parsePrice = (priceStr) =>
-    parseFloat(priceStr.replace("£", "").trim()) || 0;
 
   return (
     <div
@@ -33,7 +32,7 @@ const CartItem = ({ item }) => {
             src={item.image || "/images/placeholder.jpg"}
             alt={item.name}
             fill
-            style={{ objectFit:"contain" }}
+            style={{ objectFit: "contain" }}
           />
         </div>
 
@@ -55,7 +54,7 @@ const CartItem = ({ item }) => {
         <div className="flex items-center ml-4 lg:gap-30 sm:gap-10 gap-2 text-gray-700">
           <div className="flex  items-center">
             {!isOfferItem && (
-              <div className="bg-red-400 w-6 h-6 rounded-md flex items-center justify-center">
+              <div className="bg-red-400 w-6 h-6 cursor-pointer rounded-md flex items-center justify-center">
                 <button
                   onClick={() => removeItem(item.productId, item.isOffer)}
                   className="text-white hover:text-gray-200 font-bold"
@@ -70,25 +69,25 @@ const CartItem = ({ item }) => {
             </span>
 
             {!isOfferItem && (
-                            <div className="bg-green-400 w-6 h-6 rounded-md flex items-center justify-center">
-
-              <button
-                onClick={() => {
-                  const product = {
-                    id: item.productId,
-                    name: item.name,
-                    price: item.price,
-                    image: item.image,
-                  };
-                  addItem(product);
-                }}
-                className="text-white hover:text-gray-200 font-bold"
+              <div className="bg-green-400 w-6 h-6 cursor-pointer rounded-md flex items-center justify-center">
+                <button
+                  onClick={() => {
+                    const product = {
+                      id: item.productId,
+                      name: item.name,
+                      price: item.price,
+                      image: item.image,
+                    };
+                    addItem(product);
+                  }}
+                  className="text-white hover:text-gray-200 font-bold"
                 >
-                +
-              </button>
+                  +
+                </button>
               </div>
             )}
           </div>
+          <div className="bg-green-400 w-6 h-6 cursor-pointer rounded-md flex items-center justify-center mx-4 ">
 
           <button
             onClick={() => {
@@ -96,10 +95,11 @@ const CartItem = ({ item }) => {
                 removeItem(item.productId, item.isOffer);
               }
             }}
-            className="mx-4 p-1 text-red-500 hover:text-red-700"
+            className=" text-white hover:text-gray-200 font-bold"
           >
-            <FiTrash2 size={18} />
+            <FiX/>
           </button>
+          </div>
         </div>
       </div>
     </div>

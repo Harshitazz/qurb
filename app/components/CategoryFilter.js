@@ -14,8 +14,8 @@ const CategoryFilter = ({ selectedCategory, onCategoryChange }) => {
         <button
           key={category.id}
           onClick={() => onCategoryChange(category.id)}
-          className={`sm:px-5 px-2 py-2 rounded-full border transition font-almarai
-            ${
+          className={`sm:px-5 px-2 py-2 rounded-full border transition font-almarai shadow-xl
+                        ${
               selectedCategory === category.id
                 ? 'bg-white text-gray-900 shadow-md'
                 : 'bg-white text-gray-500 border-gray-300 hover:text-gray-700 hover:border-gray-400'

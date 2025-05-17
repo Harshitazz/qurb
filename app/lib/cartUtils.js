@@ -1,8 +1,9 @@
 
-export const calculateCartTotals = (items) => {
-  const parsePrice = (priceStr) =>
-    parseFloat(priceStr.replace("£", "").trim()) || 0;
+export const parsePrice = (priceStr) =>
+  parseFloat(priceStr.replace("£", "").trim()) || 0;
 
+export const calculateCartTotals = (items) => {
+  
   const subtotal = items.reduce(
     (sum, item) => sum + parsePrice(item.price) * item.quantity,
     0

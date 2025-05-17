@@ -13,7 +13,7 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <form onSubmit={handleSubmit} className="lg:w-full max-w-xl mx-auto">
-      <div className="relative flex items-center bg-white rounded-full shadow-sm border border-gray-200 px-2 sm:px-4 py-2">
+      <div className="relative flex items-center bg-white rounded-2xl shadow-lg border border-gray-200 px-2 sm:px-4 py-2">
         <input
           type="text"
           value={query}

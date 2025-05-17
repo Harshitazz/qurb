@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { CartProvider } from './providers/CartProvider';
 import Header from './components/Header';
 import './globals.css';
+import { WishlistProvider } from "./providers/WishlistProvider";
 
 
 export const metadata: Metadata = {
@@ -19,18 +20,20 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      
-    <body className={`  bg-gray-50 min-h-screen`}>
-    <CartProvider>
-          <Header />
-          <main className="container mx-auto px-4 py-8">
-            {children}
-          </main>
-          <ToastContainer position="bottom-right" />
-        </CartProvider>
-      </body>
-    </html>
-  </ClerkProvider>
+      <html lang="en">
+
+        <body className={`  min-h-screen`}>
+          <CartProvider>
+            <WishlistProvider>
+              <Header />
+              <main className="container mx-auto px-4 py-8">
+                {children}
+              </main>
+              <ToastContainer position="bottom-right" />
+            </WishlistProvider>
+          </CartProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
