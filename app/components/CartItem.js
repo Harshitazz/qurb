@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FiTrash2, FiX } from "react-icons/fi";
+import {  FiX } from "react-icons/fi";
 
 import { useCart } from "../providers/CartProvider";
 import { parsePrice } from "../lib/cartUtils";
